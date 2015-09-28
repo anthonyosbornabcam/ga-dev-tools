@@ -16,6 +16,79 @@ gapi.analytics.ready(function() {
 
 
   /**
+   * My GA query for sessions for the last 7 days (Google default number of days). The Google authorization bit is above this code and appears to be working fine. 
+   */
+   var report = new gapi.analytics.report.Data({
+  query: {
+    ids: 'ga:581483',
+	  'dimensions': 'ga:city',
+      'metrics': 'ga:sessions',
+      'sort': '-ga:sessions',
+	  'filters': 'ga:city==Lund'
+    }
+   });
+  
+  //My previous attempt to write something to my page div which has the ID of 'output'.  
+  report.on('success', function(report) {
+	     for (var prop in report) {
+	      var outputDiv = document.getElementById('output');
+		  outputDiv.innerHTML = report[prop];   
+		 }
+	
+	//for (var prop in report) {
+		//alert(report[prop]);
+	//}
+	
+	  
+	/**
+	Logs the correct results to the console but these are buried in several arrrays and objects as per the print-screen but for which I can't decipher.  
+	*/
+            console.log(report);
+					
+    });
+	
+  report.execute();
+
+
+  /**
+   * My second query. 
+   */
+
+
+   var report2 = new gapi.analytics.report.Data({
+  query: {
+    ids: 'ga:581483',
+	  'dimensions': 'ga:city',
+      'metrics': 'ga:users',
+      'sort': '-ga:users',
+	  'filters': 'ga:city==London'
+    }
+   });
+  
+  //My previous attempt to write something to my page div which has the ID of 'output'.  
+  report2.on('success', function(report2) {
+	     for (var prop in report2) {
+	      var outputDiv2 = document.getElementById('output2');
+		  outputDiv2.innerHTML = report2[prop];   
+		 }
+	
+	//for (var prop in report) {
+		//alert(report[prop]);
+	//}
+	
+	  
+	/**
+	Logs the correct results to the console but these are buried in several arrrays and objects as per the print-screen but for which I can't decipher.  
+	*/
+            console.log(report2);
+					
+    });
+	
+  report2.execute();
+
+
+
+  /**
    * Create a new ActiveUsers instance to be rendered inside of an
    * element with the id "active-users-container" and poll for changes every
    * five seconds.
