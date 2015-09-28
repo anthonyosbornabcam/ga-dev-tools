@@ -24,7 +24,7 @@ gapi.analytics.ready(function() {
 	  'dimensions': 'ga:city',
       'metrics': 'ga:sessions',
       'sort': '-ga:sessions',
-	  'filters': 'ga:city==Lund'
+	  'filters': 'ga:city==Manchester'
     }
    });
   
